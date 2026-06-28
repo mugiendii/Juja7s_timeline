@@ -38,9 +38,14 @@ async fn main() {
         .with_state(state)
         .layer(CorsLayer::permissive());
 
-    let addr = "0.0.0.0:3000";
-    println!("Branded timeline running → http://localhost:3000");
-    let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
+    // HOST defaults to 0.0.0.0 (needed for Docker/fly.io). On a VPS behind
+    // nginx, set HOST=127.0.0.1 so the app isn't reachable except through the
+    // reverse proxy.
+    let host = std::env::var("HOST").unwrap_or_else(|_| "0.0.0.0".to_string());
+    let port = std::env::var("PORT").unwrap_or_else(|_| "3333".to_string());
+    let addr = format!("{host}:{port}");
+    println!("Branded timeline running → http://{addr}");
+    let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
 

@@ -1,0 +1,20 @@
+[Unit]
+Description=Juja 7s branded timeline (event-timeline)
+After=network.target
+
+[Service]
+Type=simple
+User=juja7s
+Group=juja7s
+WorkingDirectory=/opt/juja7s-timeline
+EnvironmentFile=/etc/juja7s-timeline.env
+ExecStart=/opt/juja7s-timeline/target/release/event-timeline
+Restart=always
+RestartSec=3
+# Hardening — the app only needs to read its own bundled static/ and templates/
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
