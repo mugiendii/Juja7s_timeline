@@ -17,7 +17,7 @@ pub struct Theme {
     pub color_dark:       String, // black
     pub color_light:      String, // white
     pub color_accent:     String, // light leaf green
-    pub sevens_portal_url: String, // sevens_System root — login for officials/team managers
+    pub qualify_top_n:    String, // top N per pool that advance to the Cup
 }
 
 impl Theme {
@@ -31,9 +31,7 @@ impl Theme {
             color_dark:       env_or("THEME_DARK", "#111111"),
             color_light:      env_or("THEME_LIGHT", "#ffffff"),
             color_accent:     env_or("THEME_ACCENT", "#8BC34A"),
-            // sevens_System serves its officials/team-manager login at its own root,
-            // on the same host this app's SEVENS_API_URL already points at.
-            sevens_portal_url: env_or("SEVENS_API_URL", ""),
+            qualify_top_n:    env_or("POOL_QUALIFY_TOP_N", "2"),
         }
     }
 
@@ -48,6 +46,6 @@ impl Theme {
             .replace("{{COLOR_DARK}}", &self.color_dark)
             .replace("{{COLOR_LIGHT}}", &self.color_light)
             .replace("{{COLOR_ACCENT}}", &self.color_accent)
-            .replace("{{SEVENS_PORTAL_URL}}", &self.sevens_portal_url)
+            .replace("{{QUALIFY_TOP_N}}", &self.qualify_top_n)
     }
 }

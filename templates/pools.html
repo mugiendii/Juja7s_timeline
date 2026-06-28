@@ -28,7 +28,6 @@
         <a class="tab" href="/">Home</a>
         <a class="tab" href="/timeline">Order of Play</a>
         <a class="tab active" href="/pools">Pools</a>
-        <a class="tab tab-ext" href="{{SEVENS_PORTAL_URL}}" target="_blank" rel="noopener">Team Portal ↗</a>
       </nav>
     </div>
   </header>
@@ -41,7 +40,8 @@
           Standings appear once pool matches are completed.
         </small>
       </div>
-      <div id="pools"></div>
+      <div class="pools-legend"><span class="legend-dot"></span> Top {{QUALIFY_TOP_N}} in each pool advance to the Cup</div>
+      <div id="pools" data-qualify="{{QUALIFY_TOP_N}}"></div>
     </div>
   </main>
 

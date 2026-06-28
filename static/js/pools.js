@@ -24,7 +24,13 @@ function render(pools) {
   render._t = setTimeout(load, 15000);
 }
 
+function qualifyTopN() {
+  const n = parseInt(document.getElementById('pools').dataset.qualify, 10);
+  return Number.isFinite(n) && n > 0 ? n : 2;
+}
+
 function poolTable(p) {
+  const topN = qualifyTopN();
   return `
 <div class="stage-group">
   <div class="stage-sep">Pool ${p.pool}</div>
@@ -38,17 +44,19 @@ function poolTable(p) {
       <span class="pc-num">+/-</span>
       <span class="pc-num pc-pts">Pts</span>
     </div>
-    ${p.standings.map(poolRow).join('')}
+    ${p.standings.map(s => poolRow(s, topN)).join('')}
   </div>
 </div>`;
 }
 
-function poolRow(s) {
+function poolRow(s, topN) {
+  const qualified = s.position <= topN;
   return `
-    <div class="pool-row">
+    <div class="pool-row ${qualified ? 'qualified' : ''}">
       <span class="pc-team">
         <span class="sr-color" style="background:${s.color || '#555'}"></span>
         <span class="sr-name">${s.position}. ${s.name}</span>
+        ${qualified ? '<span class="qualified-badge">Cup</span>' : ''}
       </span>
       <span class="pc-num">${s.played}</span>
       <span class="pc-num">${s.won}</span>

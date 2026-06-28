@@ -23,6 +23,9 @@ primary_region = 'ams'
   THEME_ACCENT      = '#8BC34A' # light leaf green
   THEME_LOGO_URL    = '/img/logo.jpg'
 
+  # 16 teams / 4 pools of 4 — top 2 per pool advance to the Cup.
+  POOL_QUALIFY_TOP_N = '2'
+
 [http_service]
   internal_port = 3000
   force_https = true
