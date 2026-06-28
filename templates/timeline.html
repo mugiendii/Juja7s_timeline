@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TOURNAMENT_NAME}} — Order of Play</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    :root {
+      --brand-primary: {{COLOR_PRIMARY}};
+      --brand-dark:    {{COLOR_DARK}};
+      --brand-light:   {{COLOR_LIGHT}};
+      --brand-accent:  {{COLOR_ACCENT}};
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo">
+        <img class="logo-img" src="{{LOGO_URL}}" alt="{{HOST_NAME}}">
+        <span class="logo-text">
+          <span class="logo-host">{{HOST_NAME}}</span>
+          <span class="logo-tournament">{{TOURNAMENT_NAME}}</span>
+        </span>
+      </a>
+      <nav class="tabs">
+        <a class="tab" href="/">Home</a>
+        <a class="tab active" href="/timeline">Order of Play</a>
+        <a class="tab" href="/pools">Pools</a>
+        <a class="tab tab-ext" href="{{SEVENS_PORTAL_URL}}" target="_blank" rel="noopener">Team Portal ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div id="tourn-header" class="tourn-header" style="display:none"></div>
+      <div id="no-tourn" class="tl-empty" style="display:none">
+        No active tournament yet.<br>
+        <small style="display:block;margin-top:6px;font-size:12px">
+          Waiting on the timing system to publish a schedule.
+        </small>
+      </div>
+      <div id="schedule"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">{{HOST_NAME}} · {{VENUE}}</div>
+  </footer>
+
+  <script src="/js/timeline.js"></script>
+</body>
+</html>

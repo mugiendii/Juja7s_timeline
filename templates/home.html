@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TOURNAMENT_NAME}} — {{HOST_NAME}}</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    :root {
+      --brand-primary: {{COLOR_PRIMARY}};
+      --brand-dark:    {{COLOR_DARK}};
+      --brand-light:   {{COLOR_LIGHT}};
+      --brand-accent:  {{COLOR_ACCENT}};
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo">
+        <img class="logo-img" src="{{LOGO_URL}}" alt="{{HOST_NAME}}">
+        <span class="logo-text">
+          <span class="logo-host">{{HOST_NAME}}</span>
+          <span class="logo-tournament">{{TOURNAMENT_NAME}}</span>
+        </span>
+      </a>
+      <nav class="tabs">
+        <a class="tab active" href="/">Home</a>
+        <a class="tab" href="/timeline">Order of Play</a>
+        <a class="tab" href="/pools">Pools</a>
+        <a class="tab tab-ext" href="{{SEVENS_PORTAL_URL}}" target="_blank" rel="noopener">Team Portal ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <section class="hero">
+        <img class="hero-logo" src="{{LOGO_URL}}" alt="{{HOST_NAME}}">
+        <h1 class="hero-title">{{TOURNAMENT_NAME}}</h1>
+        <p class="hero-sub">Hosted by {{HOST_NAME}} · {{VENUE}}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/timeline">Order of Play</a>
+          <a class="btn btn-outline" href="/pools">Pool Standings</a>
+        </div>
+      </section>
+
+      <section class="news">
+        <div class="stage-sep">Latest</div>
+        <div class="news-card">
+          <div class="news-date">Updates</div>
+          <p>Live scores and pool standings update automatically as matches are played — check
+            <a href="/timeline">Order of Play</a> and <a href="/pools">Pools</a>.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">{{HOST_NAME}} · {{VENUE}}</div>
+  </footer>
+</body>
+</html>

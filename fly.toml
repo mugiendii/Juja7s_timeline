@@ -1,0 +1,40 @@
+# fly.toml app configuration for the Juja 7s branded timeline.
+# This is a deployment of the reusable `event-timeline` engine — branding and
+# data source are entirely env-driven (see [env] below), no code is event-specific.
+
+app = 'juja7s-timeline'
+primary_region = 'ams'
+
+[build]
+
+[env]
+  # Point this at the sevens_System instance running Juja 7s.
+  # Defaults to the same instance match-timeline already polls — update if
+  # Juja 7s runs on its own deployment.
+  SEVENS_API_URL    = 'https://sevens.mugiendii.com'
+
+  TOURNAMENT_NAME   = 'Juja 7s'
+  HOST_NAME         = 'JKUAT Cougars'
+  TOURNAMENT_VENUE  = 'JKUAT Main Campus, Juja'
+
+  THEME_PRIMARY     = '#C8102E'  # red
+  THEME_DARK        = '#111111' # black
+  THEME_LIGHT       = '#ffffff' # white
+  THEME_ACCENT      = '#8BC34A' # light leaf green
+  THEME_LOGO_URL    = '/img/logo.jpg'
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = 'connections'
+    hard_limit = 500
+    soft_limit = 200
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '256mb'

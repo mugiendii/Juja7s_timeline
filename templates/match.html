@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TOURNAMENT_NAME}} — Match</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    :root {
+      --brand-primary: {{COLOR_PRIMARY}};
+      --brand-dark:    {{COLOR_DARK}};
+      --brand-light:   {{COLOR_LIGHT}};
+      --brand-accent:  {{COLOR_ACCENT}};
+    }
+  </style>
+</head>
+<body>
+  <header class="match-page-header">
+    <div class="container">
+      <a href="/timeline" class="back-link">← Order of Play</a>
+      <div class="scoreboard" id="scoreboard"></div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="timeline-wrap">
+        <ul class="tl-list" id="timeline"></ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/match.js"></script>
+</body>
+</html>
